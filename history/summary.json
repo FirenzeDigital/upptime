@@ -22,19 +22,19 @@
     "url": "https://ligaardyti.com.ar",
     "icon": "https://icons.duckduckgo.com/ip3/ligaardyti.com.ar.ico",
     "slug": "liga-ardyti",
-    "status": "down",
-    "uptime": "94.05%",
-    "uptimeDay": "94.05%",
-    "uptimeWeek": "94.05%",
-    "uptimeMonth": "94.05%",
-    "uptimeYear": "94.05%",
-    "time": 438,
-    "timeDay": 438,
-    "timeWeek": 438,
-    "timeMonth": 438,
-    "timeYear": 438,
+    "status": "up",
+    "uptime": "90.46%",
+    "uptimeDay": "90.46%",
+    "uptimeWeek": "90.46%",
+    "uptimeMonth": "90.46%",
+    "uptimeYear": "90.46%",
+    "time": 474,
+    "timeDay": 474,
+    "timeWeek": 474,
+    "timeMonth": 474,
+    "timeYear": 474,
     "dailyMinutesDown": {
-      "2023-04-18": 32
+      "2023-04-18": 54
     }
   },
   {
