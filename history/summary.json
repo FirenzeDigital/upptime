@@ -22,19 +22,19 @@
     "url": "https://ligaardyti.com.ar",
     "icon": "https://icons.duckduckgo.com/ip3/ligaardyti.com.ar.ico",
     "slug": "liga-ardyti",
-    "status": "up",
-    "uptime": "93.12%",
-    "uptimeDay": "92.16%",
-    "uptimeWeek": "89.71%",
-    "uptimeMonth": "93.12%",
-    "uptimeYear": "93.12%",
+    "status": "down",
+    "uptime": "93.19%",
+    "uptimeDay": "92.14%",
+    "uptimeWeek": "89.70%",
+    "uptimeMonth": "93.19%",
+    "uptimeYear": "93.19%",
     "time": 520,
-    "timeDay": 440,
+    "timeDay": 425,
     "timeWeek": 510,
     "timeMonth": 520,
     "timeYear": 520,
     "dailyMinutesDown": {
-      "2023-05-16": 74,
+      "2023-05-16": 75,
       "2023-05-15": 249,
       "2023-05-14": 111,
       "2023-05-13": 89,
@@ -54,7 +54,7 @@
       "2023-04-29": 82,
       "2023-04-28": 73,
       "2023-04-27": 78,
-      "2023-04-26": 47
+      "2023-04-26": 17
     }
   },
   {
@@ -92,18 +92,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/socios.andrisani.com.ar.ico",
     "slug": "andrisani-socios-admin",
     "status": "down",
-    "uptime": "100.00%",
-    "uptimeDay": "99.99%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
+    "uptime": "99.97%",
+    "uptimeDay": "99.29%",
+    "uptimeWeek": "99.90%",
+    "uptimeMonth": "99.97%",
+    "uptimeYear": "99.97%",
     "time": 982,
     "timeDay": 816,
     "timeWeek": 1547,
     "timeMonth": 982,
     "timeYear": 982,
     "dailyMinutesDown": {
-      "2023-05-16": 0
+      "2023-05-16": 10
     }
   }
 ]
