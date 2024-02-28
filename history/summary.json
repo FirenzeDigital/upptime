@@ -34,7 +34,7 @@
     "timeMonth": 0,
     "timeYear": 517,
     "dailyMinutesDown": {
-      "2024-02-28": 58,
+      "2024-02-28": 76,
       "2024-02-27": 1440,
       "2024-02-26": 1440,
       "2024-02-25": 1440,
@@ -341,9 +341,9 @@
     "url": "https://www.andrisani.com.ar",
     "icon": "https://icons.duckduckgo.com/ip3/www.andrisani.com.ar.ico",
     "slug": "andrisani-website",
-    "status": "up",
+    "status": "down",
     "uptime": "98.38%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "95.48%",
     "uptimeYear": "98.38%",
@@ -353,6 +353,7 @@
     "timeMonth": 1000,
     "timeYear": 905,
     "dailyMinutesDown": {
+      "2024-02-28": 0,
       "2024-02-14": 32,
       "2024-02-03": 528,
       "2024-02-02": 1381,
@@ -427,7 +428,7 @@
     "timeMonth": 0,
     "timeYear": 880,
     "dailyMinutesDown": {
-      "2024-02-28": 58,
+      "2024-02-28": 76,
       "2024-02-27": 1440,
       "2024-02-26": 1440,
       "2024-02-25": 1440,
