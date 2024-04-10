@@ -8,18 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install required libraries
-        run: npm install @octokit/rest node-fetch @actions/core
-      - uses: actions/github-script@v6
+      - name: Install @octokit/rest and node-fetch
+        run: npm install @octokit/rest node-fetch
+      - name: Delete closed issues
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
           script: |
-            const core = require('@actions/core');
             const { Octokit } = require("@octokit/rest");
-            const octokit = new Octokit({
-              auth: process.env.INPUT_GITHUB_TOKEN,
-              request: { fetch: require('node-fetch') }
-            });
+            const fetch = require("node-fetch");
+            const octokit = new Octokit({ auth: process.env.INPUT_GITHUB_TOKEN, request: { fetch } });
             async function listClosedIssues() {
               const { data: issues } = await octokit.issues.listForRepo({
                 owner: context.repo.owner,
@@ -28,7 +26,7 @@ jobs:
               });
               return issues;
             }
-            async function confirmDeletion(issues) {
+            async function deleteClosedIssues(issues) {
               const confirmed = true; // Manually triggering, always confirm
               if (confirmed) {
                 for (const issue of issues) {
@@ -48,7 +46,7 @@ jobs:
               if (issues.length > 0) {
                 console.log(`Found ${issues.length} closed issues:`);
                 issues.forEach(issue => console.log(`  #${issue.number} - ${issue.title}`));
-                await confirmDeletion(issues);
+                await deleteClosedIssues(issues);
               } else {
                 console.log('No closed issues found.');
               }
