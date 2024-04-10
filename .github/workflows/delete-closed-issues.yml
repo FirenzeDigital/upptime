@@ -1,9 +1,16 @@
 name: delete closed issue
+
 on:
-  issues:
-    types: [closed]
+  workflow_dispatch:
+    inputs:
+      confirm_deletion:
+        description: 'Confirm to delete all closed issues'
+        required: true
+        default: 'false'
+
 jobs:
   delete-issue:
+    if: ${{ github.event.inputs.confirm_deletion == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: vtcaregorodtcev/delete-issue@main
