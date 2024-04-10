@@ -1,19 +1,51 @@
-name: delete closed issue
+name: Delete Closed Issues (Manual)
 
 on:
   workflow_dispatch:
-    inputs:
-      confirm_deletion:
-        description: 'Confirm to delete all closed issues'
-        required: true
-        default: 'false'
 
 jobs:
-  delete-issue:
-    if: ${{ github.event.inputs.confirm_deletion == 'true' }}
+  delete-closed-issues:
     runs-on: ubuntu-latest
     steps:
-      - uses: vtcaregorodtcev/delete-issue@main
+      - uses: actions/github-script@v6
         with:
-          github_token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
-          issue_node_id: ${{ github.event.issue.node_id }}
+          github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
+          script: |
+            const { Octokit } = require("@octokit/rest");
+            const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+
+            async function listClosedIssues() {
+              const { data: issues } = await octokit.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'closed'
+              });
+              return issues;
+            }
+
+            async function confirmDeletion(issues) {
+              const confirmed = await core.getBoolean('Confirm deletion? (This action will permanently delete all closed issues!)');
+              if (confirmed) {
+                for (const issue of issues) {
+                  await octokit.issues.delete({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue.number
+                  });
+                  console.log(`Deleted issue: #${issue.number} - ${issue.title}`);
+                }
+              } else {
+                console.log('Deletion cancelled.');
+              }
+            }
+
+            (async () => {
+              const issues = await listClosedIssues();
+              if (issues.length > 0) {
+                console.log(`Found ${issues.length} closed issues:`);
+                issues.forEach(issue => console.log(`  #${issue.number} - ${issue.title}`));
+                await confirmDeletion(issues);
+              } else {
+                console.log('No closed issues found.');
+              }
+            })();
