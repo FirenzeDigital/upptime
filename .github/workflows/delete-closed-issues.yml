@@ -8,14 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install @octokit/rest and node-fetch
-        run: npm install @octokit/rest node-fetch
+      - name: Install required libraries
+        run: npm install @octokit/rest node-fetch @actions/core
       - uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
           script: |
+            const core = require('@actions/core');
             const { Octokit } = require("@octokit/rest");
-            const octokit = new Octokit({ auth: process.env.INPUT_GITHUB_TOKEN });
+            const octokit = new Octokit({
+              auth: process.env.INPUT_GITHUB_TOKEN,
+              request: { fetch: require('node-fetch') }
+            });
             async function listClosedIssues() {
               const { data: issues } = await octokit.issues.listForRepo({
                 owner: context.repo.owner,
