@@ -15,8 +15,7 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
           script: |
             const { Octokit } = require("@octokit/rest");
-            const fetch = require("node-fetch");
-            const octokit = new Octokit({ auth: process.env.INPUT_GITHUB_TOKEN, request: { fetch } });
+            const octokit = new Octokit({ auth: process.env.INPUT_GITHUB_TOKEN });
             async function listClosedIssues() {
               const { data: issues } = await octokit.issues.listForRepo({
                 owner: context.repo.owner,
