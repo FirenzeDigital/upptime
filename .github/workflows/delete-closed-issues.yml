@@ -1,0 +1,19 @@
+name: Delete Closed Issues (Manual)
+
+on:
+  workflow_dispatch: # This workflow runs only manually
+
+jobs:
+  delete-closed-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.issues.listForRepo({ state: 'closed' }).then(data => {
+              data.data.forEach(issue => {
+                console.log(`Deleting issue: ${issue.number}`);
+                github.issues.deleteIssue({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number });
+              })
+            });
