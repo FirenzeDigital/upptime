@@ -14,9 +14,9 @@ jobs:
         run: npm install node-fetch  # Or a preferred polyfill library
       - uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
+          github_token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
           script: |
-            const fetch = require('node-fetch');  # Import the polyfill
+            const myFetch = require('node-fetch');  # Use a different name for fetch
             const { Octokit } = require("@octokit/rest");
             const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
