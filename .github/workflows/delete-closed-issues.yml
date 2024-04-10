@@ -7,6 +7,9 @@ jobs:
   delete-closed-issues:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - name: Install @octokit/rest
+        run: npm install @octokit/rest
       - uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
