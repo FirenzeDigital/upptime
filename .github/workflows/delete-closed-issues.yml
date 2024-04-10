@@ -43,10 +43,20 @@ jobs:
             -H "Content-Type: application/json" \
             -d "$QUERY" "$GRAPHQL_URL")
 
-          # Parse response and extract issue IDs
-          ISSUE_IDS=$(echo "$RESPONSE" | jq -r '.data.repository.issues.nodes[].id')
+          # Check for successful response (exit code 0)
+          if [[ $? -ne 0 ]]; then
+            echo "Error fetching closed issues. Skipping deletion."
+            exit 1
+          fi
 
-          # Delete each closed issue
+          # Check if any closed issues were found in the response
+          ISSUE_IDS=$(echo "$RESPONSE" | jq -r '.data.repository.issues.nodes[].id')
+          if [[ -z "$ISSUE_IDS" ]]; then
+            echo "No closed issues found."
+            exit 0
+          fi
+
+          # Delete each closed issue with error handling
           for ISSUE_ID in $ISSUE_IDS; do
             DELETE_MUTATION=$(cat <<EOF
             mutation {
@@ -57,10 +67,11 @@ jobs:
             EOF
             )
 
-            curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
+            DELETE_RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
               -H "Content-Type: application/json" \
-              -d "$DELETE_MUTATION" "$GRAPHQL_URL"
+              -d "$DELETE_MUTATION" "$GRAPHQL_URL")
 
+            # Check for successful deletion response (exit code 0)
             if [[ $? -ne 0 ]]; then
               echo "Error deleting issue with ID: $ISSUE_ID. Skipping..."
             fi
