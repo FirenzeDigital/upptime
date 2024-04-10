@@ -10,10 +10,13 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install @octokit/rest
         run: npm install @octokit/rest
+      - name: Install fetch polyfill (if needed)
+        run: npm install node-fetch  # Or a preferred polyfill library
       - uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
           script: |
+            const fetch = require('node-fetch');  # Import the polyfill
             const { Octokit } = require("@octokit/rest");
             const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
