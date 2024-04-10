@@ -1,19 +1,36 @@
 name: Delete Closed Issues (Manual)
 
 on:
-  workflow_dispatch: # This workflow runs only manually
+  workflow_dispatch:
+    inputs:
+      confirm_deletion:
+        description: 'Confirm to delete all closed issues'
+        required: true
+        default: 'false'
 
 jobs:
-  delete-closed-issues:
+  delete_closed_issues:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
-          script: |
-            github.issues.listForRepo({ state: 'closed' }).then(data => {
-              data.data.forEach(issue => {
-                console.log(`Deleting issue: ${issue.number}`);
-                github.issues.deleteIssue({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number });
-              })
-            });
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Delete closed issues
+        if: ${{ github.event.inputs.confirm_deletion == 'true' }}
+        run: |
+          GITHUB_TOKEN=${{ secrets.GH_TOKEN_DELETE_ISSUE }}
+          REPO_OWNER=${{ github.repository_owner }}
+          REPO_NAME=${{ github.event.repository.name }}
+          
+          # Get all closed issues
+          CLOSED_ISSUES=$(curl -s -X GET -G \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d "state=closed" \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues" | jq -r '.[].number')
+
+          # Delete each closed issue
+          for ISSUE_NUMBER in $CLOSED_ISSUES; do
+            curl -X DELETE \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues/$ISSUE_NUMBER"
+          done
