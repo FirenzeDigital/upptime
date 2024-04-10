@@ -3,14 +3,17 @@ owner: FirenzeDigital # Your GitHub organization or username, where this reposit
 repo: upptime # The name of this repository
 
 sites:
+  # Firenze Digital
   - name: Firenze Digital Website
     url: https://firenze.digital
-  - name: Liga Ardyti
-    url: https://ligaardyti.com.ar
+  # Liga Ardyti
+  # - name: Liga Ardyti
+  #   url: https://ligaardyti.com.ar
+  # Andrisani
   - name: Andrisani Website
     url: https://www.andrisani.com.ar
-  - name: Andrisani Socios Admin
-    url: https://socios.andrisani.com.ar
+  # - name: Andrisani Socios Admin
+  #   url: https://socios.andrisani.com.ar
 
 status-website:
   # Add your custom domain name, or remove the `cname` line if you don't have a domain
