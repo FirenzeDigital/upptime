@@ -18,19 +18,50 @@ jobs:
       - name: Delete closed issues
         if: ${{ github.event.inputs.confirm_deletion == 'true' }}
         run: |
+          # Use dedicated secret for issue deletion with write access
           GITHUB_TOKEN=${{ secrets.GH_TOKEN_DELETE_ISSUE }}
           REPO_OWNER=${{ github.repository_owner }}
           REPO_NAME=${{ github.event.repository.name }}
-          
-          # Get all closed issues
-          CLOSED_ISSUES=$(curl -s -X GET -G \
-            -H "Accept: application/vnd.github.v3+json" \
-            -d "state=closed" \
-            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues" | jq -r '.[].number')
+
+          # Construct GraphQL query
+          QUERY=$(cat <<EOF
+          query {
+            repository(owner: "$REPO_OWNER", name: "$REPO_NAME") {
+              issues(states: CLOSED) {
+                nodes {
+                  id
+                }
+              }
+            }
+          }
+          EOF
+          )
+
+          # Execute GraphQL query using personal access token
+          GRAPHQL_URL="https://api.github.com/graphql"
+          RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$QUERY" "$GRAPHQL_URL")
+
+          # Parse response and extract issue IDs
+          ISSUE_IDS=$(echo "$RESPONSE" | jq -r '.data.repository.issues.nodes[].id')
 
           # Delete each closed issue
-          for ISSUE_NUMBER in $CLOSED_ISSUES; do
-            curl -X DELETE \
-              -H "Authorization: token $GITHUB_TOKEN" \
-              "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues/$ISSUE_NUMBER"
+          for ISSUE_ID in $ISSUE_IDS; do
+            DELETE_MUTATION=$(cat <<EOF
+            mutation {
+              deleteIssue(input: {issueId: "$ISSUE_ID"}) {
+                clientMutationId
+              }
+            }
+            EOF
+            )
+
+            curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "$DELETE_MUTATION" "$GRAPHQL_URL"
+
+            if [[ $? -ne 0 ]]; then
+              echo "Error deleting issue with ID: $ISSUE_ID. Skipping..."
+            fi
           done
