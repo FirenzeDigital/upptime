@@ -16,10 +16,9 @@ jobs:
         with:
           github-token: ${{ secrets.GH_TOKEN_DELETE_ISSUE }}
           script: |
-            const myFetch = require('node-fetch');  # Use a different name for fetch
+            const myFetch = require('node-fetch');  // Use a different name for fetch
             const { Octokit } = require("@octokit/rest");
-            const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-
+            const octokit = new Octokit({ auth: process.env.INPUT_GITHUB_TOKEN });
             async function listClosedIssues() {
               const { data: issues } = await octokit.issues.listForRepo({
                 owner: context.repo.owner,
@@ -28,9 +27,8 @@ jobs:
               });
               return issues;
             }
-
             async function confirmDeletion(issues) {
-              const confirmed = await core.getBoolean('Confirm deletion? (This action will permanently delete all closed issues!)');
+              const confirmed = true; // Manually triggering, always confirm
               if (confirmed) {
                 for (const issue of issues) {
                   await octokit.issues.delete({
@@ -44,7 +42,6 @@ jobs:
                 console.log('Deletion cancelled.');
               }
             }
-
             (async () => {
               const issues = await listClosedIssues();
               if (issues.length > 0) {
