@@ -4,7 +4,7 @@
     "url": "https://firenze.digital",
     "icon": "https://icons.duckduckgo.com/ip3/firenze.digital.ico",
     "slug": "firenze-digital-website",
-    "status": "up",
+    "status": "down",
     "uptime": "99.98%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
@@ -16,6 +16,7 @@
     "timeMonth": 250,
     "timeYear": 178,
     "dailyMinutesDown": {
+      "2024-08-08": 0,
       "2024-06-30": 115
     }
   },
@@ -34,7 +35,7 @@
     "timeDay": 379,
     "timeWeek": 450,
     "timeMonth": 499,
-    "timeYear": 789,
+    "timeYear": 790,
     "dailyMinutesDown": {}
   }
 ]
