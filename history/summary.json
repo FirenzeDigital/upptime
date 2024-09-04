@@ -28,7 +28,7 @@
     "url": "https://www.andrisani.com.ar",
     "icon": "https://icons.duckduckgo.com/ip3/www.andrisani.com.ar.ico",
     "slug": "andrisani-website",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
@@ -39,6 +39,8 @@
     "timeWeek": 485,
     "timeMonth": 467,
     "timeYear": 744,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2024-09-04": 0
+    }
   }
 ]
