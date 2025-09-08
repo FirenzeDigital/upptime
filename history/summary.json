@@ -4,13 +4,13 @@
     "url": "https://firenze.digital",
     "icon": "https://icons.duckduckgo.com/ip3/firenze.digital.ico",
     "slug": "firenze-digital-website",
-    "status": "up",
+    "status": "down",
     "uptime": "99.52%",
     "uptimeDay": "97.19%",
     "uptimeWeek": "99.60%",
     "uptimeMonth": "98.89%",
-    "uptimeYear": "98.85%",
-    "time": 1113,
+    "uptimeYear": "98.86%",
+    "time": 1114,
     "timeDay": 748,
     "timeWeek": 1045,
     "timeMonth": 2036,
@@ -92,8 +92,7 @@
       "2024-12-29": 17,
       "2024-12-21": 31,
       "2024-12-18": 96,
-      "2024-12-17": 36,
-      "2024-12-14": 31
+      "2024-12-17": 36
     }
   },
   {
@@ -106,7 +105,7 @@
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "98.82%",
+    "uptimeYear": "98.92%",
     "time": 711,
     "timeDay": 573,
     "timeWeek": 662,
