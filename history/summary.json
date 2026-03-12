@@ -6,13 +6,13 @@
     "slug": "firenze-digital-website",
     "status": "up",
     "uptime": "99.45%",
-    "uptimeDay": "92.48%",
-    "uptimeWeek": "89.28%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "91.00%",
     "uptimeMonth": "97.53%",
     "uptimeYear": "98.42%",
-    "time": 1380,
-    "timeDay": 1346,
-    "timeWeek": 1005,
+    "time": 1379,
+    "timeDay": 865,
+    "timeWeek": 991,
     "timeMonth": 874,
     "timeYear": 1367,
     "dailyMinutesDown": {
@@ -108,10 +108,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 738,
-    "timeDay": 427,
-    "timeWeek": 1376,
-    "timeMonth": 1323,
-    "timeYear": 756,
+    "timeDay": 504,
+    "timeWeek": 1349,
+    "timeMonth": 1316,
+    "timeYear": 757,
     "dailyMinutesDown": {}
   }
 ]
