@@ -4,17 +4,17 @@
     "url": "https://firenze.digital",
     "icon": "https://icons.duckduckgo.com/ip3/firenze.digital.ico",
     "slug": "firenze-digital-website",
-    "status": "up",
-    "uptime": "99.48%",
+    "status": "down",
+    "uptime": "99.49%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "95.67%",
     "uptimeMonth": "98.12%",
     "uptimeYear": "98.68%",
-    "time": 1531,
-    "timeDay": 696,
-    "timeWeek": 6403,
-    "timeMonth": 3824,
-    "timeYear": 1623,
+    "time": 1546,
+    "timeDay": 5520,
+    "timeWeek": 6834,
+    "timeMonth": 4071,
+    "timeYear": 1642,
     "dailyMinutesDown": {
       "2025-06-20": 26,
       "2025-06-29": 16,
@@ -73,7 +73,8 @@
       "2026-05-27": 95,
       "2026-05-29": 171,
       "2026-06-13": 297,
-      "2026-06-14": 139
+      "2026-06-14": 139,
+      "2026-06-17": 0
     }
   },
   {
@@ -82,16 +83,16 @@
     "icon": "https://icons.duckduckgo.com/ip3/www.andrisani.com.ar.ico",
     "slug": "andrisani-website",
     "status": "up",
-    "uptime": "99.33%",
+    "uptime": "99.34%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 751,
-    "timeDay": 552,
-    "timeWeek": 544,
-    "timeMonth": 600,
-    "timeYear": 788,
+    "timeDay": 538,
+    "timeWeek": 542,
+    "timeMonth": 606,
+    "timeYear": 787,
     "dailyMinutesDown": {}
   }
 ]
