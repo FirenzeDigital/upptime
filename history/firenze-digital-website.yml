@@ -1,7 +1,7 @@
 url: https://firenze.digital
-status: up
-code: 200
-responseTime: 1118
-lastUpdated: 2026-09-27T01:04:03.723Z
+status: down
+code: 502
+responseTime: 427
+lastUpdated: 2026-09-27T10:43:12.902Z
 startTime: 2023-04-18T10:57:49.000Z
 generator: Upptime <https://github.com/upptime/upptime>
