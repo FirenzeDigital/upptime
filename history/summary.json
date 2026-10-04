@@ -6,10 +6,10 @@
     "slug": "firenze-digital-website",
     "status": "down",
     "uptime": "99.39%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "90.43%",
-    "uptimeMonth": "96.85%",
-    "uptimeYear": "98.24%",
+    "uptimeDay": "90.47%",
+    "uptimeWeek": "89.07%",
+    "uptimeMonth": "96.53%",
+    "uptimeYear": "98.21%",
     "time": 1569,
     "timeDay": 0,
     "timeWeek": 1763,
@@ -75,7 +75,8 @@
       "2026-08-31": 36,
       "2026-09-11": 417,
       "2026-09-27": 276,
-      "2026-09-30": 688
+      "2026-09-30": 688,
+      "2026-10-04": 137
     }
   },
   {
